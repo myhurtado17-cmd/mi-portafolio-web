@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/svg+xml" href="/public/icono.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 </head>
 
-<body>
+<body
+  class="bg-bg-dark text-text-light font-sans antialiased transition-colors duration-300 dark:bg-bg-dark dark:text-text-light">
+
   <header class="header">
     <div class="container header-content">
       <a href="#" class="logo text-gradient">Portfolio.</a>
@@ -120,61 +122,80 @@
           <!-- Project 1 -->
           <article class="project-card">
             <div class="card-image">
-              <div class="image-placeholder"></div>
+              <div class="image-placeholder">
+                <img src="" alt="Foto de ThingSpeak" class="profile-image">
+              </div>
             </div>
             <div class="card-content">
-              <h3 class="project-title">E-Commerce Dashboard</h3>
-              <p class="project-description">A comprehensive dashboard for managing online stores, featuring real-time
-                analytics and inventory management.</p>
+              <h3 class="project-title">Proyecto de monitoreo climático</h3>
+              <p class="project-description">Proyecto de monitoreo climático que permite a los usuarios visualizar
+                datos meteorológicos en tiempo real y hacer predicciones.</p>
               <ul class="project-tags">
-                <li>Vue.js</li>
-                <li>Tailwind</li>
-                <li>Firebase</li>
+                <li> <i class="devicon-arduino-plain" style="color: #00979D"></i> ESP32</li>
+                <li> ThingSpeak</li>
+                <li><i class="devicon-firebase-plain colored"></i> Firebase</li>
               </ul>
-              <div class="project-links">
-                <a href="#">Demo</a>
-                <a href="#">Code</a>
-              </div>
             </div>
           </article>
           <!-- Project 2 -->
           <article class="project-card">
             <div class="card-image">
-              <div class="image-placeholder"></div>
+              <div class="image-placeholder">
+                <img src="/public/mapaColombia.png" alt="Foto de mapa narco Colombia" class="profile-image">
+              </div>
             </div>
             <div class="card-content">
-              <h3 class="project-title">Task Management App</h3>
-              <p class="project-description">A productivity tool that helps teams organize and prioritize their work
-                with
-                an intuitive drag-and-drop interface.</p>
+              <h3 class="project-title">Mapa narco Colombia</h3>
+              <p class="project-description">Mapa que muestra la distribución de los principales narcotráficos en
+                Colombia.</p>
               <ul class="project-tags">
-                <li>React</li>
-                <li>Redux</li>
-                <li>Node.js</li>
+                <li><i class="devicon-javascript-plain colored"></i> JavaScript</li>
+                <li><i class="devicon-html5-plain colored"></i> HTML5</li>
+                <li><i class="devicon-css3-plain colored"></i> CSS3</li>
               </ul>
               <div class="project-links">
-                <a href="#">Demo</a>
-                <a href="#">Code</a>
+                <a href="https://myhurtado17-cmd.github.io/mapa-narco-colombia">Demo</a>
+                <a href="https://github.com/myhurtado17-cmd/mapa-narco-colombia">Code</a>
               </div>
             </div>
           </article>
           <!-- Project 3 -->
           <article class="project-card">
             <div class="card-image">
-              <div class="image-placeholder"></div>
+              <div class="image-placeholder">
+                <img src="/public/Juego2D.png" alt="Juego2D" class="profile-image">
+              </div>
             </div>
             <div class="card-content">
-              <h3 class="project-title">Weather Forecast</h3>
-              <p class="project-description">A beautiful weather application that provides accurate forecasts and severe
-                weather alerts for any location.</p>
+              <h3 class="project-title">Demo Video juego 2D de plataformas</h3>
+              <p class="project-description">Video juego 2D de plataformas que permite a los usuarios jugar contra la
+                IA.</p>
               <ul class="project-tags">
-                <li>TypeScript</li>
-                <li>OpenWeather API</li>
-                <li>SCSS</li>
+                <li><i class="devicon-csharp-plain colored"></i> C#</li>
+                <li><i class="devicon-unity-original" style="color: #000000"></i> Unity</li>
               </ul>
               <div class="project-links">
-                <a href="#">Demo</a>
-                <a href="#">Code</a>
+                <a href="https://marcogg-24.itch.io/happy-jump">Demo</a>
+              </div>
+            </div>
+          </article>
+          <!-- Project 4 -->
+          <article>
+            <div class="project-card">
+              <div class="card-image">
+                <div class="image-placeholder">
+                  <img src="" alt="" class="profile-image">
+                </div>
+              </div>
+              <div class="card-content">
+                <h3 class="project-title"></h3>
+                <p class="project-description"></p>
+                <ul class="" project-tags>
+                  <li><i></i></li>
+                </ul>
+                <div class="project-links">
+                  <a href="#">Demo</a>
+                </div>
               </div>
             </div>
           </article>

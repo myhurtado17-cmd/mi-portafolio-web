@@ -599,3 +599,12 @@ html.dark .moon-icon {
 .stagger-3 {
   transition-delay: 0.3s;
 }
+
+.profile-image {
+  transition: transform 0.4s, filter 0.4s;
+}
+
+.profile-image:hover {
+  transform: scale(1.08);
+  filter: blur(1px);
+}

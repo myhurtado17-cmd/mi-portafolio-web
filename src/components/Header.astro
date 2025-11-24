@@ -1,0 +1,18 @@
+---
+import ThemeToggle from './ThemeToggle';
+---
+
+<header class="fixed top-0 left-0 w-full h-[80px] bg-nav-bg backdrop-blur-md z-50 border-b border-card-border">
+  <div class="container mx-auto px-8 h-full flex justify-between items-center">
+    <a href="#" class="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Portfolio.</a>
+    <nav class="hidden md:block">
+      <ul class="flex gap-8">
+        <li><a href="#home" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Home</a></li>
+        <li><a href="#about" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">About</a></li>
+        <li><a href="#projects" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Projects</a></li>
+        <li><a href="#contact" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Contact</a></li>
+      </ul>
+    </nav>
+    <ThemeToggle client:load />
+  </div>
+</header>

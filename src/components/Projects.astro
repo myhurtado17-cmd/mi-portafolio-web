@@ -1,0 +1,88 @@
+---
+const projects = [
+  {
+    title: "Proyecto de monitoreo climático",
+    description: "Proyecto de monitoreo climático que permite a los usuarios visualizar datos meteorológicos en tiempo real y hacer predicciones.",
+    image: "",
+    tags: [
+      { name: "ESP32", icon: "devicon-arduino-plain", color: "#00979D" },
+      { name: "ThingSpeak", icon: "" },
+      { name: "Firebase", icon: "devicon-firebase-plain colored" }
+    ],
+    links: []
+  },
+  {
+    title: "Mapa narco Colombia",
+    description: "Mapa que muestra la distribución de los principales narcotráficos en Colombia.",
+    image: "/mapaColombia.png",
+    tags: [
+      { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+      { name: "HTML5", icon: "devicon-html5-plain colored" },
+      { name: "CSS3", icon: "devicon-css3-plain colored" }
+    ],
+    links: [
+      { text: "Demo", url: "https://myhurtado17-cmd.github.io/mapa-narco-colombia" },
+      { text: "Code", url: "https://github.com/myhurtado17-cmd/mapa-narco-colombia" }
+    ]
+  },
+  {
+    title: "Demo Video juego 2D de plataformas",
+    description: "Video juego 2D de plataformas que permite a los usuarios jugar contra la IA.",
+    image: "/Juego2D.png",
+    tags: [
+      { name: "C#", icon: "devicon-csharp-plain colored" },
+      { name: "Unity", icon: "devicon-unity-original", color: "#000000" }
+    ],
+    links: [
+      { text: "Demo", url: "https://marcogg-24.itch.io/happy-jump" }
+    ]
+  },
+  {
+    title: "",
+    description: "",
+    image: "",
+    tags: [
+      { name: "", icon: "" }
+    ],
+    links: [
+      { text: "Demo", url: "#" }
+    ]
+  }
+];
+---
+
+<section id="projects" class="py-24">
+  <div class="container mx-auto px-8">
+    <h2 class="text-4xl font-display font-bold mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-2.5 after:left-0 after:w-[60px] after:h-1 after:bg-primary after:rounded-sm">Featured Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <article class="bg-card-bg border border-card-border rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary group">
+          <div class="h-[200px] overflow-hidden">
+            <div class="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 transition-transform duration-500 group-hover:scale-105">
+              {project.image && <img src={project.image} alt={project.title} class="w-full h-full object-cover" />}
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">{project.title}</h3>
+            <p class="text-text-secondary text-sm mb-6">{project.description}</p>
+            <ul class="flex flex-wrap gap-2 mb-6">
+              {project.tags.map((tag) => (
+                tag.name && (
+                  <li class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full flex items-center gap-1">
+                    {tag.icon && <i class={tag.icon} style={tag.color ? `color: ${tag.color}` : ''}></i>}
+                    {tag.name}
+                  </li>
+                )
+              ))}
+            </ul>
+            <div class="flex gap-4 text-sm font-semibold">
+              {project.links.map((link) => (
+                <a href={link.url} class="hover:text-primary transition-colors">{link.text}</a>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
