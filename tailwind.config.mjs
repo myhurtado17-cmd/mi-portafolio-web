@@ -16,8 +16,9 @@ export default {
                 'nav-bg': 'var(--nav-bg)',
             },
             fontFamily: {
-                'sans': ['Inter', 'sans-serif'],
-                'display': ['Outfit', 'sans-serif'],
+                sans: ['Inter', 'sans-serif', 'system-ui'],
+                display: ['Outfit', 'sans-serif'],
+                mono: ['jetBrains Mono', 'monospace'],
             },
             animation: {
                 'float': 'float 10s infinite ease-in-out',
