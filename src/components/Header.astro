@@ -5,14 +5,82 @@ import ThemeToggle from './ThemeToggle';
 <header class="fixed top-0 left-0 w-full h-[80px] bg-nav-bg backdrop-blur-md z-50 border-b border-card-border">
   <div class="container mx-auto px-8 h-full flex justify-between items-center">
     <a href="#" class="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Portfolio.</a>
-    <nav class="hidden md:block">
+
+    <nav class="hidden md:flex items-center gap-8" id="nav-menu">
       <ul class="flex gap-8">
-        <li><a href="#home" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Home</a></li>
-        <li><a href="#about" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">About</a></li>
-        <li><a href="#projects" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Projects</a></li>
-        <li><a href="#contact" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Contact</a></li>
+        <li><a href="#home" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Inicio</a></li>
+        <li><a href="#about" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Sobre mí</a></li>
+        <li><a href="#projects" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Proyectos</a></li>
+        <li><a href="#contact" class="font-medium relative hover:text-primary transition-colors after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-[width] hover:after:w-full">Contacto</a></li>
       </ul>
     </nav>
-    <ThemeToggle client:load />
+
+    <div class="flex items-center gap-3">
+      <ThemeToggle client:load />
+
+      <button id="menu-toggle" class="md:hidden p-2 rounded-full hover:bg-card-bg transition-colors" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+          <line x1="4" y1="6" x2="20" y2="6"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-drawer" class="fixed inset-0 z-40 hidden">
+    <div id="drawer-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="absolute top-0 right-0 h-full w-3/4 max-w-[300px] bg-bg-main border-l border-card-border pt-24 px-8 shadow-2xl">
+      <nav>
+        <ul class="flex flex-col gap-6 text-lg">
+          <li><a href="#home" class="block font-medium hover:text-primary transition-colors drawer-link" data-target="home">Inicio</a></li>
+          <li><a href="#about" class="block font-medium hover:text-primary transition-colors drawer-link" data-target="about">Sobre mí</a></li>
+          <li><a href="#projects" class="block font-medium hover:text-primary transition-colors drawer-link" data-target="projects">Proyectos</a></li>
+          <li><a href="#contact" class="block font-medium hover:text-primary transition-colors drawer-link" data-target="contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </header>
+
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const drawer = document.getElementById('mobile-drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  const menuIcon = document.querySelector('.menu-icon');
+  const closeIcon = document.querySelector('.close-icon');
+  const drawerLinks = document.querySelectorAll('.drawer-link');
+  const body = document.body;
+
+  function openDrawer() {
+    drawer.classList.remove('hidden');
+    menuIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+    body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.add('hidden');
+    menuIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+    body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (drawer.classList.contains('hidden')) openDrawer();
+    else closeDrawer();
+  });
+
+  overlay.addEventListener('click', closeDrawer);
+
+  drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>

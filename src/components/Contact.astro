@@ -1,16 +1,93 @@
+---
+const WEB3FORMS_KEY = Astro.site ? import.meta.env.PUBLIC_WEB3FORMS_KEY : '';
+---
+
 <section id="contact" class="py-24">
-  <div class="container mx-auto px-8 text-center max-w-[600px]">
-    <h2 class="text-4xl font-mono font-bold mb-12 relative inline-block after:content-[''] after:absolute after:-bottom-2.5 after:left-0 after:w-[60px] after:h-1 after:bg-primary after:rounded-sm">
-      Contactame
+  <div class="container mx-auto px-8 max-w-[600px]">
+    <h2 class="text-4xl font-mono font-bold mb-4 text-center relative inline-block after:content-[''] after:absolute after:-bottom-2.5 after:left-1/2 after:-translate-x-1/2 after:w-[60px] after:h-1 after:bg-primary after:rounded-sm">
+      Contáctame
     </h2>
-    <p class="text-lg text-text-secondary mb-10 font-mono">
-      Actualmente estoy buscando nuevas oportunidades, 
-      mi buzón de correo siempre está abierto.
-      Tanto si tienes alguna pregunta como si solo quieres saludar, 
-      haré todo lo posible por responderte!
+    <p class="text-lg text-text-secondary mb-10 text-center font-mono">
+      Actualmente estoy buscando nuevas oportunidades.
+      Si tienes alguna pregunta o solo quieres saludar, ¡haré todo lo posible por responderte!
     </p>
-    <a href="mailto:myhurtado17@gmail.com" class="inline-block px-10 py-4 rounded-full font-semibold bg-primary text-white shadow-[0_4px_14px_rgba(100,108,255,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(100,108,255,0.4)] transition-all duration-300 font-mono">
-      Say Hello
-    </a>
+
+    <form id="contact-form" class="flex flex-col gap-6">
+      <div class="flex flex-col sm:flex-row gap-4">
+        <input
+          type="text"
+          name="name"
+          placeholder="Tu nombre"
+          required
+          class="flex-1 px-4 py-3 rounded-xl bg-card-bg border border-card-border text-text-main placeholder:text-text-secondary focus:outline-none focus:border-primary transition-colors font-mono text-sm"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Tu correo"
+          required
+          class="flex-1 px-4 py-3 rounded-xl bg-card-bg border border-card-border text-text-main placeholder:text-text-secondary focus:outline-none focus:border-primary transition-colors font-mono text-sm"
+        />
+      </div>
+      <textarea
+        name="message"
+        placeholder="Tu mensaje"
+        rows="5"
+        required
+        class="w-full px-4 py-3 rounded-xl bg-card-bg border border-card-border text-text-main placeholder:text-text-secondary focus:outline-none focus:border-primary transition-colors resize-none font-mono text-sm"
+      ></textarea>
+      <button
+        type="submit"
+        id="submit-btn"
+        class="self-center px-10 py-4 rounded-full font-semibold bg-primary text-white shadow-[0_4px_14px_rgba(100,108,255,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(100,108,255,0.4)] transition-all duration-300 font-mono disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Enviar mensaje
+      </button>
+      <p id="form-status" class="text-center text-sm font-mono hidden"></p>
+    </form>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const statusEl = document.getElementById('form-status');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    statusEl.classList.add('hidden');
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '72cb9af4-4c4a-4efc-abc2-2d52dadf5640',
+          ...data,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        statusEl.textContent = '¡Mensaje enviado con éxito! Te responderé pronto.';
+        statusEl.className = 'text-center text-sm font-mono text-green-500';
+        form.reset();
+      } else {
+        throw new Error(result.message || 'Error al enviar');
+      }
+    } catch {
+      statusEl.textContent = 'Hubo un error al enviar el mensaje. Intenta de nuevo o escríbeme directamente a myhurtado17@gmail.com.';
+      statusEl.className = 'text-center text-sm font-mono text-red-500';
+    }
+
+    statusEl.classList.remove('hidden');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar mensaje';
+  });
+</script>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://myhurtado17-cmd.github.io/mi-portafolio-web/sitemap-index.xml

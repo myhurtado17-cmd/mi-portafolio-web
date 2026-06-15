@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-    integrations: [react(), tailwind()],
-    output: 'static'
+  integrations: [react(), tailwind(), sitemap()],
+  output: 'static',
+  site: 'https://myhurtado17-cmd.github.io/mi-portafolio-web',
 });
