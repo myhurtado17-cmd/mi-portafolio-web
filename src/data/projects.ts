@@ -90,4 +90,20 @@ export const projects: Project[] = [
       { text: "Código", url: "https://github.com/myhurtado17-cmd/pokewiki" },
     ],
   },
+  {
+    title: "Gym tracker",
+    description:
+      "Proyecto desarrollado para llevar un registro de las actividades realizadas en el gimnasio, con el objetivo de mejorar la salud y el bienestar, usando una API de workoutxapp.com para obtener ejercicios y llevar un registro de las actividades realizadas.",
+    image: "/pokewiki.png",
+    tags: [
+      { name: "Astro", icon: "astro" },
+      { name: "Tailwind", icon: "tailwind" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "JavaScript", icon: "javascript" },
+    ],
+    links: [
+      { text: "Demo", url: "https://gymtracker-1aqp9b2wo-myhurtado17-8955s-projects.vercel.app/login" },
+      { text: "Código", url: "https://github.com/myhurtado17-cmd/gym" },
+    ],
+  },
 ];
